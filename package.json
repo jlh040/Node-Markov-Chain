@@ -1,0 +1,19 @@
+{
+  "name": "markov",
+  "version": "1.0.0",
+  "description": "An application that mimicks a markov process by mapping a set of words to another set of words",
+  "main": "makeText.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jlh040/Node-Markov-Chain.git"
+  },
+  "author": "Jeff Hall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jlh040/Node-Markov-Chain/issues"
+  },
+  "homepage": "https://github.com/jlh040/Node-Markov-Chain#readme"
+}
