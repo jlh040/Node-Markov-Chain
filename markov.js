@@ -28,7 +28,6 @@ class MarkovMachine {
     };
 
     this.chainMap = chainMap;
-    console.log(this.chainMap)
   }
 
 
