@@ -37,10 +37,8 @@ class MarkovMachine {
   makeText(numWords = 100) {
     let randomText = '';
     let currState = sample([...this.chainMap.keys()]);
-    console.log([...this.chainMap.keys()])
 
     randomText = currState[0].toUpperCase() + currState.slice(1);
-    console.log(randomText)
 
     for (let i = 1; i < numWords; i++) {
       if (!this.chainMap.get(currState).includes(null)) {
@@ -52,6 +50,3 @@ class MarkovMachine {
     return randomText
   }
 }
-
-const markovian = new MarkovMachine('the cat in the hat is in the hat');
-console.log(markovian.makeText(10));
