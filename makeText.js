@@ -1,5 +1,6 @@
 /** Command-line tool to generate Markov text. */
 const { MarkovMachine } = require('./markov');
+const axios = require('axios');
 const fs = require('fs');
 
 function getFileText() {
@@ -17,16 +18,42 @@ function getFileText() {
     })
 }
 
-async function logSentenceFromFile() {
-    let fileText = await getFileText();
-    const mm = new MarkovMachine(fileText);
+function getUrlText() {
+    const url = process.argv[3];
+    return new Promise(async (resolve, reject) => {
+        try {
+            const resp = await axios.get(url);
+            resolve(resp.data);
+        }
+        catch(e) {
+            console.log('Please enter a valid URL!', e);
+            process.exit(1);
+        }
+    })
+}
+
+async function logToConsole(file, url) {
+    let mm;
+    let text;
+
+    if (file) {
+        text = await getFileText();
+        mm = new MarkovMachine(text);
+    }
+    else if (url) {
+        text = await getUrlText();
+        mm = new MarkovMachine(text)
+    }
 
     console.log(mm.makeText())
 }
 
 function checkForFileOrUrl() {
     if (process.argv[2] === 'file') {
-        logSentenceFromFile();
+        logToConsole(file = true);
+    }
+    else if (process.argv[2] === 'url') {
+        logToConsole(url = true);
     }
 }
 
