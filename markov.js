@@ -50,3 +50,7 @@ class MarkovMachine {
     return randomText
   }
 }
+
+module.exports = {
+  MarkovMachine
+}
