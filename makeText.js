@@ -26,7 +26,7 @@ function getUrlText() {
             resolve(resp.data);
         }
         catch(e) {
-            console.log('Please enter a valid URL!', e);
+            console.log('Please enter a valid URL! Response Status Code: 404');
             process.exit(1);
         }
     })
