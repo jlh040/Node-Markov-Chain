@@ -38,8 +38,6 @@ class MarkovMachine {
     let randomText = '';
     let currState = sample([...this.chainMap.keys()]);
 
-    randomText = currState[0].toUpperCase() + currState.slice(1);
-
     for (let i = 1; i < numWords; i++) {
       if (!this.chainMap.get(currState).includes(null)) {
         currState = sample(this.chainMap.get(currState));

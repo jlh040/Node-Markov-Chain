@@ -27,4 +27,23 @@ describe('MarkovMachine Tests', () => {
         let markovianV7 = new MarkovMachine('This is one of the largest dr seuss books in the world and it is great');
         expect(markovianV6.makeText()).toEqual(expect.any(String));
     })
+
+    test('does the markov chain stop at the last word of the input text?', () => {
+        let markovianV8 = new MarkovMachine('Who is the man at the door he will soon be in a car');
+        let randomTextInArr = markovianV8.makeText().split(' ') 
+        expect(randomTextInArr[randomTextInArr.length - 1]).toBe('car');
+    })
+
+    test('are we bounded by the number of words that we pass in to makeText?', () => {
+        let markovianV9 = new MarkovMachine('I do not like them here or there.');
+
+        let randomTextInArr = markovianV9.makeText(numWords = 15).split(' ')
+        expect(randomTextInArr.length).toBeLessThanOrEqual(15);
+        
+        randomTextInArr = markovianV9.makeText(numWords = 3).split(' ')
+        expect(randomTextInArr.length).toBeLessThanOrEqual(3);
+
+        randomTextInArr = markovianV9.makeText(numWords = 5).split(' ')
+        expect(randomTextInArr.length).toBeLessThanOrEqual(5);
+    })
 })
