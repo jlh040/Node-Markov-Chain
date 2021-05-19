@@ -9,6 +9,6 @@
 ### Technicalities
 
 - To get this code onto your machine, run `git clone https://github.com/jlh040/Node-Markov-Chain.git` in your terminal.
-- Then run `npm install` to install all the dependencies at once.
+- Then, assuming you have [Node](https://nodejs.org/en/) installed, run `npm install` to install all the dependencies at once.
 - To get random text from this app, type `node makeText.js` and then pass in either `url | path` and finally pass in either the url or the filepath.
 - Note that I tested this application using [Jest](https://jestjs.io/).
