@@ -32,15 +32,15 @@ function getUrlText() {
     })
 }
 
-async function logToConsole(file, url) {
+async function logToConsole(fileFlag, urlFlag) {
     let mm;
     let text;
 
-    if (file) {
+    if (fileFlag) {
         text = await getFileText();
         mm = new MarkovMachine(text);
     }
-    else if (url) {
+    else if (urlFlag) {
         text = await getUrlText();
         mm = new MarkovMachine(text)
     }
@@ -50,10 +50,14 @@ async function logToConsole(file, url) {
 
 function checkForFileOrUrl() {
     if (process.argv[2] === 'file') {
-        logToConsole(file = true);
+        logToConsole(true, false);
     }
     else if (process.argv[2] === 'url') {
-        logToConsole(url = true);
+        logToConsole(false,true);
+    }
+    else {
+        console.log('Error: Please specify url | file');
+        process.exit(1);
     }
 }
 
