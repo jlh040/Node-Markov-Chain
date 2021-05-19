@@ -1,4 +1,5 @@
 /** Textual markov chain generator */
+const { sample } = require('lodash');
 
 
 class MarkovMachine {
@@ -34,8 +35,23 @@ class MarkovMachine {
   /** return random text from chains */
 
   makeText(numWords = 100) {
-    // TODO
+    let randomText = '';
+    let currState = sample([...this.chainMap.keys()]);
+    console.log([...this.chainMap.keys()])
+
+    randomText = currState[0].toUpperCase() + currState.slice(1);
+    console.log(randomText)
+
+    for (let i = 1; i < numWords; i++) {
+      if (!this.chainMap.get(currState).includes(null)) {
+        currState = sample(this.chainMap.get(currState));
+        randomText += ' ' + currState;
+      }
+    }
+
+    return randomText
   }
 }
 
-let markovian = new MarkovMachine('the cat in the hat')
+const markovian = new MarkovMachine('the cat in the hat is in the hat');
+console.log(markovian.makeText(10));

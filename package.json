@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/jlh040/Node-Markov-Chain/issues"
   },
-  "homepage": "https://github.com/jlh040/Node-Markov-Chain#readme"
+  "homepage": "https://github.com/jlh040/Node-Markov-Chain#readme",
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
 }
